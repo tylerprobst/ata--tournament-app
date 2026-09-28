@@ -73,10 +73,13 @@ body.phone-frame-outer, html.phone-frame-outer {
   flex: 1; text-align: center; padding: 10px 4px; border-radius: 6px;
   font-size: 12px; font-weight: 600; color: #A8B0C0;
   min-height: 44px; display: flex; align-items: center; justify-content: center;
-  text-decoration: none; cursor: default; pointer-events: none; opacity: 0.85;
+  text-decoration: none; cursor: pointer;
 }
 .shell-nav .active, .phone-wrap .shell-nav .active {
   background: #E11D2E; color: #ffffff; opacity: 1;
+}
+.shell-nav span:not(.active), .shell-nav a:not(.active) {
+  opacity: 0.45; cursor: default; pointer-events: none;
 }
 .body, .phone-wrap .body {
   padding: 14px 16px 20px; flex: 1; overflow-y: auto;
@@ -100,10 +103,10 @@ body.phone-frame-outer, html.phone-frame-outer {
 }
 .back-chip:active, .back-chip:hover { color: #F2F4F8; border-color: #4DA3FF; }
 .hub-chip {
-  position: absolute; top: 8px; right: 8px; z-index: 20;
   font-size: 11px; font-weight: 600; color: #6B7385;
   text-decoration: none; padding: 6px 10px; border-radius: 6px;
   background: rgba(36, 43, 61, 0.9); border: 1px solid #2E3648;
+  white-space: nowrap;
 }
 .hub-chip:hover { color: #F2F4F8; }
 .badge {
@@ -235,9 +238,7 @@ p { color: #F2F4F8; }
 </style>
 </head>
 <body class="theme-ringDay phone-frame-outer" data-theme="ringDay">
-  <div class="phone-wrap" id="frame">
-    <a class="hub-chip" href="index.html">Hub</a>
-    <div class="phone-status">
+  <div class="phone-wrap" id="frame">    <div class="phone-status">
       <span class="time">9:41</span>
       <span class="icons">●●● LTE 🔋</span>
     </div>
@@ -246,9 +247,12 @@ p { color: #F2F4F8; }
         <div class="title">Sparring panel</div>
         <div class="wordmark-rule"></div>
       </div>
-      <span class="badge badge-offline">Offline</span>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="hub-chip" href="index.html">Hub</a>
+        <span class="badge badge-offline">Offline</span>
+      </div>
     </div>
-    <div class="shell-nav"><span class="active">Home</span><span class="">Schedule</span><span class="">Me</span><span class="">Alerts</span></div>
+    <div class="shell-nav"><a href="index.html" class="active">Home</a><span class="">Schedule</span><span class="">Me</span><span class="">Alerts</span></div>
     <div class="body">
 <a class="back-chip" href="J1-judge-assignment.html">← Back</a>
       <h1 class="h1">Sparring panel · Ring 3</h1>
