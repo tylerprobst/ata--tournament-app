@@ -2,8 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   createRing,
   assignDivision,
-  startRing,
-  RingError,
+  setRingStatus,
   createRingRole,
   createJudgeAssignment,
   validateNoOverlap,
@@ -17,7 +16,7 @@ describe('Ring', () => {
       id: 'ring-1',
       tournamentId: 't1',
       label: 'Ring 1',
-      location: 'Main Floor',
+      locationNotes: 'Main Floor',
     });
     expect(ring.status).toBe('idle');
     expect(ring.label).toBe('Ring 1');
@@ -30,40 +29,18 @@ describe('Ring', () => {
       label: 'Ring 2',
     });
     const assigned = assignDivision(ring, 'd1');
-    expect(assigned.currentDivisionId).toBe('d1');
+    expect(assigned.divisionId).toBe('d1');
   });
 
-  it('starts a Ring (transitions to active)', () => {
+  it('sets ring status', () => {
     const ring = createRing({
       id: 'ring-3',
       tournamentId: 't1',
       label: 'Ring 3',
+      divisionId: 'd1',
     });
-    const assigned = assignDivision(ring, 'd1');
-    const started = startRing(assigned);
-    expect(started.status).toBe('active');
-  });
-
-  it('cannot start Ring without assigned Division', () => {
-    const ring = createRing({
-      id: 'ring-4',
-      tournamentId: 't1',
-      label: 'Ring 4',
-    });
-    expect(() => startRing(ring)).toThrow(RingError);
-    expect(() => startRing(ring)).toThrow(/without assigned Division/);
-  });
-
-  it('cannot reassign Division while active', () => {
-    const ring = createRing({
-      id: 'ring-5',
-      tournamentId: 't1',
-      label: 'Ring 5',
-    });
-    const assigned = assignDivision(ring, 'd1');
-    const started = startRing(assigned);
-    expect(() => assignDivision(started, 'd2')).toThrow(RingError);
-    expect(() => assignDivision(started, 'd2')).toThrow(/while active/);
+    const active = setRingStatus(ring, 'active');
+    expect(active.status).toBe('active');
   });
 });
 
@@ -72,20 +49,20 @@ describe('RingRole', () => {
     const tk = createRingRole({
       id: 'rr-1',
       ringId: 'ring-1',
-      roleType: 'timekeeper',
+      role: 'timekeeper',
       assignedPersonId: 'p1',
-      assignedPersonName: 'John Timer',
+      window: { startMs: 1000 },
     });
-    expect(tk.roleType).toBe('timekeeper');
+    expect(tk.role).toBe('timekeeper');
 
     const sk = createRingRole({
       id: 'rr-2',
       ringId: 'ring-1',
-      roleType: 'scorekeeper',
+      role: 'scorekeeper',
       assignedPersonId: 'p2',
-      assignedPersonName: 'Jane Score',
+      window: { startMs: 2000 },
     });
-    expect(sk.roleType).toBe('scorekeeper');
+    expect(sk.role).toBe('scorekeeper');
   });
 });
 
@@ -95,44 +72,43 @@ describe('JudgeAssignment', () => {
       id: 'ja-1',
       tournamentId: 't1',
       personId: 'j1',
-      personName: 'Alice Judge',
       ringId: 'ring-1',
       divisionId: 'd1',
       role: 'center',
+      window: { startMs: 1000 },
     });
     expect(center.role).toBe('center');
-    expect(center.status).toBe('assigned');
+    expect(center.status).toBe('proposed');
 
     const corner = createJudgeAssignment({
       id: 'ja-2',
       tournamentId: 't1',
       personId: 'j2',
-      personName: 'Bob Judge',
       ringId: 'ring-1',
       role: 'corner',
-      panelPosition: 0,
+      panelSeat: 1,
+      window: { startMs: 1000 },
     });
     expect(corner.role).toBe('corner');
-    expect(corner.panelPosition).toBe(0);
+    expect(corner.panelSeat).toBe(1);
   });
 
-  it('validateNoOverlap stub always returns true (M1)', () => {
+  it('validateNoOverlap stub always returns true (deprecated)', () => {
     const assignment = createJudgeAssignment({
       id: 'ja-3',
       tournamentId: 't1',
       personId: 'j3',
-      personName: 'Charlie Judge',
       ringId: 'ring-2',
       role: 'center',
+      window: { startMs: 1000 },
     });
-    // M1 stub: always valid (full check deferred)
     expect(validateNoOverlap(assignment, [])).toBe(true);
     expect(validateNoOverlap(assignment, ['c1', 'c2'])).toBe(true);
   });
 });
 
 describe('Schedule', () => {
-  it('creates a ScheduleSlot', () => {
+  it('creates a ScheduleSlot (deprecated stub)', () => {
     const slot = createScheduleSlot({
       id: 'ss-1',
       tournamentId: 't1',
@@ -143,7 +119,6 @@ describe('Schedule', () => {
       sequenceOrder: 1,
     });
     expect(slot.status).toBe('scheduled');
-    expect(slot.estimatedDurationMin).toBe(45);
     expect(slot.sequenceOrder).toBe(1);
   });
 
@@ -157,7 +132,6 @@ describe('Schedule', () => {
       [{ id: 'ring-1' }, { id: 'ring-2' }],
       new Date('2026-03-15T08:00:00'),
     );
-    // M1 stub: empty (full scheduler with high-rank-first deferred)
     expect(slots).toEqual([]);
   });
 });

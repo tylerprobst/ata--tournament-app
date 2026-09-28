@@ -1,17 +1,24 @@
 /**
- * RingRole — staff roles attached to a Ring (timekeeper, scorekeeper).
- * Distinct from JudgeAssignment (judges score; RingRole runs table operations).
+ * RingRole — timekeeper / scorekeeper staffed on a Ring.
+ * Distinct from JudgeAssignment. Belongs to ring context, NOT device identity
+ * (hot-spare tablet = ring context).
  */
 
 export type RingRoleType = 'timekeeper' | 'scorekeeper';
 
+export interface AssignmentWindow {
+  /** Epoch ms start of staff assignment (local tournament clock). */
+  startMs: number;
+  /** Epoch ms end; omit for open-ended window. */
+  endMs?: number;
+}
+
 export interface RingRole {
   id: string;
   ringId: string;
-  roleType: RingRoleType;
-  /** Staff or competitor acting as staff. */
+  role: RingRoleType;
   assignedPersonId: string;
-  assignedPersonName: string;
+  window: AssignmentWindow;
 }
 
 export class RingRoleError extends Error {
@@ -21,19 +28,20 @@ export class RingRoleError extends Error {
   }
 }
 
-/** Create a RingRole assignment. */
-export function createRingRole(params: {
+export interface CreateRingRoleInput {
   id: string;
   ringId: string;
-  roleType: RingRoleType;
+  role: RingRoleType;
   assignedPersonId: string;
-  assignedPersonName: string;
-}): RingRole {
+  window: AssignmentWindow;
+}
+
+export function createRingRole(input: CreateRingRoleInput): RingRole {
   return {
-    id: params.id,
-    ringId: params.ringId,
-    roleType: params.roleType,
-    assignedPersonId: params.assignedPersonId,
-    assignedPersonName: params.assignedPersonName,
+    id: input.id,
+    ringId: input.ringId,
+    role: input.role,
+    assignedPersonId: input.assignedPersonId,
+    window: { ...input.window },
   };
 }
