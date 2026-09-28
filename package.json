@@ -1,0 +1,23 @@
+{
+  "name": "ata-tournament-app",
+  "version": "0.1.0",
+  "description": "ATA Tournament App — M1 domain packages (Core Reg, Bracket Ring, Day Ops)",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:watch": "npm run test:watch --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  },
+  "license": "UNLICENSED"
+}
