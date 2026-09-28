@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="theme-color" content="#0F1218"/>
-<title>ATA Tournament — Prototype Hub</title>
+<title>A8 — Closed-ring audit log</title>
 <style>
 
 /* ATA Ring Day — inlined hard-coded tokens for file:// + http */
@@ -235,22 +235,6 @@ p { color: #F2F4F8; }
   min-height: 72px; font-size: 24px; font-weight: 700;
 }
 
-.hub-hero { margin: 8px 0 20px; }
-.hub-hero .h1 { font-size: 26px; margin-bottom: 6px; }
-.flow-btn {
-  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
-  gap: 6px; width: 100%; min-height: 96px; margin-bottom: 12px;
-  padding: 18px 18px; border-radius: 14px;
-  background: #242B3D; border: 1px solid #2E3648;
-  color: #F2F4F8; text-decoration: none; cursor: pointer;
-}
-.flow-btn:active { transform: scale(0.98); border-color: #E11D2E; }
-.flow-btn .label { font-size: 18px; font-weight: 700; }
-.flow-btn .sub { font-size: 13px; color: #A8B0C0; font-weight: 500; }
-.flow-btn .arrow { color: #E11D2E; font-weight: 700; font-size: 14px; margin-top: 4px; }
-.flow-btn.reg { border-left: 4px solid #E11D2E; }
-.flow-btn.dir { border-left: 4px solid #4DA3FF; }
-.flow-btn.judge { border-left: 4px solid #0B6E4F; }
 </style>
 </head>
 <body class="theme-ringDay phone-frame-outer" data-theme="ringDay">
@@ -261,90 +245,60 @@ p { color: #F2F4F8; }
     </div>
     <div class="shell-bar">
       <div>
-        <div class="title">ATA Tournament</div>
+        <div class="title">Tournament Admin</div>
         <div class="wordmark-rule"></div>
       </div>
-      <span class="badge badge-info">Mid-fi</span>
+      <a class="hub-chip" href="index.html">Hub</a>
     </div>
-    <div class="shell-nav">
-      <a href="index.html" class="active">Home</a><span>Schedule</span><span>Me</span><span>Alerts</span>
-    </div>
+    <div class="shell-nav"><a href="index.html" class="active">Home</a><span>Schedule</span><span>Me</span><span>Alerts</span></div>
     <div class="body">
-      <div class="hub-hero">
-        <div class="page-label">Prototype v1 · Full Design Package</div>
-        <h1 class="h1">ATA Tournament Flows</h1>
-        <p class="meta">Ring Day dark · phone prototype · all screens wired</p>
+
+      <div class="page-label">A8</div>
+      <a class="back-chip" href="A7-settings-roles.html">← Back</a>
+
+      <h1 class="h1">Audit <span class="meta">(closed-ring adjustments only)</span></h1>
+      <div class="row">
+        <div class="field"><label>Ring</label><select><option>All</option><option>Ring 3</option></select></div>
+        <div class="field"><label>Date</label><input value="2026-09-12"/></div>
       </div>
+      <div class="list">
+        <div class="list-item" style="flex-direction:column;align-items:stretch">
+          <div style="display:flex;justify-content:space-between">
+            <strong>14:22 · Dir. Smith · Ring 3</strong>
+            <span class="badge badge-danger">reopen + score edit</span>
+          </div>
+          <div class="meta" style="margin-top:6px">Reason: wrong winner confirmed</div>
+          <div class="muted">Before: Blake winner → After: Avery winner</div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:12px">Empty state: no closed-ring adjustments yet.</p>
 
-      <h2 class="h2">Admin</h2>
-      <a class="flow-btn" href="A1-tournament-list.html" style="border-left:4px solid #4DA3FF">
-        <span class="label">Tournament Admin</span>
-        <span class="sub">A1 → A2 → A3 → A4 → A5 → A6 → A7 → A8</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Registration</h2>
-      <a class="flow-btn reg" href="R1-registration-start.html">
-        <span class="label">Registration flow</span>
-        <span class="sub">R1 → R2 → R3 → R4 → R5 → R6</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Competitor</h2>
-      <a class="flow-btn" href="C1-check-in.html" style="border-left:4px solid #0B6E4F">
-        <span class="label">Competitor journey</span>
-        <span class="sub">C1 → C2 → C3 · E1 schedule</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Director</h2>
-      <a class="flow-btn dir" href="D1-director-home.html">
-        <span class="label">Director dashboard</span>
-        <span class="sub">D1 → D2 → D3 · D4 reopen</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Judge</h2>
-      <a class="flow-btn judge" href="J1-judge-assignment.html">
-        <span class="label">Judge scoring</span>
-        <span class="sub">J1 → J2 (forms 1–9) · J3 sparring presence</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Bracket Wizard</h2>
-      <a class="flow-btn" href="B1-bracket-titles.html" style="border-left:4px solid #C45C00">
-        <span class="label">Bracket generation</span>
-        <span class="sub">B1 → B2 → B3 → B4 → B5</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Scorekeeper & Timekeeper</h2>
-      <a class="flow-btn" href="K1-scorekeeper-sparring.html" style="border-left:4px solid #8A8F98">
-        <span class="label">Scorekeeper sparring</span>
-        <span class="sub">K1 → K2 next pair</span>
-        <span class="arrow">Start →</span>
-      </a>
-      <a class="flow-btn" href="K3-scorekeeper-forms-flight.html" style="border-left:4px solid #8A8F98">
-        <span class="label">Scorekeeper forms</span>
-        <span class="sub">K3 → K4 → K5 tie reperform</span>
-        <span class="arrow">Start →</span>
-      </a>
-      <a class="flow-btn" href="T1-timekeeper-overlay.html" style="border-left:4px solid #8A8F98">
-        <span class="label">Timekeeper</span>
-        <span class="sub">T1 overlay (sparring)</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <h2 class="h2">Ring End</h2>
-      <a class="flow-btn" href="N1-ring-end-awards.html" style="border-left:4px solid #6B7385">
-        <span class="label">Ring end & awards</span>
-        <span class="sub">N1 → N2 locked</span>
-        <span class="arrow">Start →</span>
-      </a>
-
-      <p class="muted" style="margin-top:24px">Schedule / Me / Alerts chrome is visual only. Hub chip on each screen returns here. All Design Package screens (A1–A8, R1–R6, D1–D4, J1–J3, B1–B5, C1–C3, E1, K1–K5, T1, N1–N2) are now phone-wired.</p>
+    
     </div>
     <div class="home-ind"><i></i></div>
   </div>
+
+<script>
+(function(){
+  document.querySelectorAll('.check').forEach(function(el){
+    el.addEventListener('click', function(){
+      el.classList.toggle('on');
+    });
+  });
+  document.querySelectorAll('.radio').forEach(function(el){
+    el.addEventListener('click', function(){
+      var group = el.parentElement;
+      var g = el.getAttribute('data-group');
+      if (g) {
+        document.querySelectorAll('.radio[data-group="'+g+'"]').forEach(function(r){ r.classList.remove('on'); });
+      } else {
+        group.querySelectorAll(':scope > .radio').forEach(function(r){ r.classList.remove('on'); });
+      }
+      el.classList.add('on');
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
