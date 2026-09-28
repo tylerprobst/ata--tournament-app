@@ -1,0 +1,28 @@
+{
+  "name": "@ata/day-operations",
+  "version": "0.1.0",
+  "description": "ATA Tournament App — Day Operations domain (Ring, RingRole, JudgeAssignment, Schedule). No UI.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  },
+  "private": true,
+  "license": "UNLICENSED"
+}
