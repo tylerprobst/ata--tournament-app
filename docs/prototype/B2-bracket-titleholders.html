@@ -79,10 +79,10 @@ body.phone-frame-outer, html.phone-frame-outer {
   background: #E11D2E; color: #ffffff; opacity: 1;
 }
 .shell-nav span:not(.active), .shell-nav a:not(.active) {
-  opacity: 0.45; cursor: default; pointer-events: none;
+  opacity: 0.3; cursor: default; pointer-events: none;
 }
 .body, .phone-wrap .body {
-  padding: 14px 16px 20px; flex: 1; overflow-y: auto;
+  padding: 12px 16px 16px; flex: 1; overflow-y: auto;
   -webkit-overflow-scrolling: touch; background: #0F1218; color: #F2F4F8;
 }
 .home-ind {
@@ -188,7 +188,7 @@ a.list-item:active, .list-item.tap:active { border-color: #4DA3FF; }
 .radio, .check {
   display: flex; align-items: center; gap: 10px;
   padding: 12px; border: 1px solid #2E3648; border-radius: 10px;
-  min-height: 48px; margin-bottom: 8px; background: #242B3D; color: #F2F4F8;
+  min-height: 48px; margin-bottom: 6px; background: #242B3D; color: #F2F4F8;
   cursor: pointer; user-select: none;
 }
 .radio.on, .check.on { border-color: #E11D2E; box-shadow: inset 0 0 0 1px #E11D2E; }
@@ -253,17 +253,16 @@ p { color: #F2F4F8; }
     <div class="shell-nav"><a href="index.html" class="active">Home</a><span>Schedule</span><span>Me</span><span>Alerts</span></div>
     <div class="body">
 
-      <div class="page-label">B2</div>
       <a class="back-chip" href="B1-bracket-titles.html">← Back</a>
 
       <p class="meta">Step 2 · Who has titles?</p>
       <h1 class="h1">Title holders</h1>
-      <div class="check on"><span class="box"></span> Avery <span class="badge badge-info">state</span></div>
+      <div class="check on" style="margin-top:8px"><span class="box"></span> Avery <span class="badge badge-info">state</span></div>
       <div class="check"><span class="box"></span> Blake</div>
       <div class="check on"><span class="box"></span> Casey <span class="badge badge-info">world</span></div>
       <div class="check"><span class="box"></span> Drew</div>
       <p class="note">Title holders get byes first. Leftover byes: random.</p>
-      <a class="primary btn-lg btn" href="B3-bracket-generated.html" style="margin-top:16px">Generate bracket</a>
+      <a class="primary btn-lg btn btn-block" href="B3-bracket-generated.html" style="margin-top:12px">Generate bracket</a>
 
     </div>
     <div class="shell-footer"><button class="primary">Scorekeeper</button><button class="">Timekeeper</button><button class="">Need judge</button><button class="">Lock / End</button>

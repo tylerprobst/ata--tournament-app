@@ -79,10 +79,10 @@ body.phone-frame-outer, html.phone-frame-outer {
   background: #E11D2E; color: #ffffff; opacity: 1;
 }
 .shell-nav span:not(.active), .shell-nav a:not(.active) {
-  opacity: 0.45; cursor: default; pointer-events: none;
+  opacity: 0.3; cursor: default; pointer-events: none;
 }
 .body, .phone-wrap .body {
-  padding: 14px 16px 20px; flex: 1; overflow-y: auto;
+  padding: 12px 16px 16px; flex: 1; overflow-y: auto;
   -webkit-overflow-scrolling: touch; background: #0F1218; color: #F2F4F8;
 }
 .home-ind {
@@ -188,7 +188,7 @@ a.list-item:active, .list-item.tap:active { border-color: #4DA3FF; }
 .radio, .check {
   display: flex; align-items: center; gap: 10px;
   padding: 12px; border: 1px solid #2E3648; border-radius: 10px;
-  min-height: 48px; margin-bottom: 8px; background: #242B3D; color: #F2F4F8;
+  min-height: 48px; margin-bottom: 6px; background: #242B3D; color: #F2F4F8;
   cursor: pointer; user-select: none;
 }
 .radio.on, .check.on { border-color: #E11D2E; box-shadow: inset 0 0 0 1px #E11D2E; }
@@ -258,10 +258,10 @@ p { color: #F2F4F8; }
       <h1 class="h1">Willing to judge?</h1>
       <div class="radio" data-group="willing"><span class="dot"></span> No</div>
       <div class="radio on" data-group="willing"><span class="dot"></span> Yes</div>
-      <div class="h2">If yes — preferred role</div>
+      <div class="h2" style="margin-top:12px">If yes — preferred role</div>
       <div class="radio" data-group="role"><span class="dot"></span> Center</div>
       <div class="radio on" data-group="role"><span class="dot"></span> Corner</div>
-      <a class="primary btn-block" style="margin-top:16px" href="R5-payment-confirm.html">Continue</a>
+      <a class="primary btn-block btn-lg" style="margin-top:16px" href="R5-payment-confirm.html">Continue</a>
     </div>
     <div class="home-ind"><i></i></div>
   </div>

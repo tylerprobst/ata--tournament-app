@@ -79,10 +79,10 @@ body.phone-frame-outer, html.phone-frame-outer {
   background: #E11D2E; color: #ffffff; opacity: 1;
 }
 .shell-nav span:not(.active), .shell-nav a:not(.active) {
-  opacity: 0.45; cursor: default; pointer-events: none;
+  opacity: 0.3; cursor: default; pointer-events: none;
 }
 .body, .phone-wrap .body {
-  padding: 14px 16px 20px; flex: 1; overflow-y: auto;
+  padding: 12px 16px 16px; flex: 1; overflow-y: auto;
   -webkit-overflow-scrolling: touch; background: #0F1218; color: #F2F4F8;
 }
 .home-ind {
@@ -188,7 +188,7 @@ a.list-item:active, .list-item.tap:active { border-color: #4DA3FF; }
 .radio, .check {
   display: flex; align-items: center; gap: 10px;
   padding: 12px; border: 1px solid #2E3648; border-radius: 10px;
-  min-height: 48px; margin-bottom: 8px; background: #242B3D; color: #F2F4F8;
+  min-height: 48px; margin-bottom: 6px; background: #242B3D; color: #F2F4F8;
   cursor: pointer; user-select: none;
 }
 .radio.on, .check.on { border-color: #E11D2E; box-shadow: inset 0 0 0 1px #E11D2E; }
@@ -253,19 +253,18 @@ p { color: #F2F4F8; }
     <div class="shell-nav"><a href="index.html" class="active">Home</a><span>Schedule</span><span>Me</span><span>Alerts</span></div>
     <div class="body">
 
-      <div class="page-label">B4</div>
       <a class="back-chip" href="B3-bracket-generated.html">← Back</a>
 
       <h1 class="h1">Reorder</h1>
-      <p class="meta">Scorekeeper / judges / timekeeper · Drag to reshuffle slots / byes · R/W and Bye on every slot</p>
-      <div class="list" style="margin-top:16px;max-width:520px">
+      <p class="meta" style="margin-bottom:12px">Drag to reshuffle slots / byes · R/W and Bye on every slot</p>
+      <div class="list" style="max-width:520px">
         <div class="list-item"><div><span class="muted">≡</span> <span class="chip chip-red">R</span> Avery <span class="chip chip-bye">BYE</span></div></div>
         <div class="list-item"><div><span class="muted">≡</span> <span class="chip chip-white">W</span> Blake</div></div>
         <div class="list-item"><div><span class="muted">≡</span> <span class="chip chip-red">R</span> Casey</div></div>
         <div class="list-item"><div><span class="muted">≡</span> <span class="chip chip-white">W</span> Drew</div></div>
         <div class="list-item"><div><span class="muted">≡</span> <span class="chip chip-bye">BYE</span> open slot</div></div>
       </div>
-      <a class="primary btn" href="B5-bracket-lock.html" style="margin-top:16px">Done</a>
+      <a class="primary btn btn-lg btn-block" href="B5-bracket-lock.html" style="margin-top:16px;max-width:520px">Done</a>
 
     </div>
     <div class="shell-footer"><button class="primary">Scorekeeper</button><button class="">Timekeeper</button><button class="">Need judge</button><button class="">Lock / End</button>

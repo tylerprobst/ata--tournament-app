@@ -79,10 +79,10 @@ body.phone-frame-outer, html.phone-frame-outer {
   background: #E11D2E; color: #ffffff; opacity: 1;
 }
 .shell-nav span:not(.active), .shell-nav a:not(.active) {
-  opacity: 0.45; cursor: default; pointer-events: none;
+  opacity: 0.3; cursor: default; pointer-events: none;
 }
 .body, .phone-wrap .body {
-  padding: 14px 16px 20px; flex: 1; overflow-y: auto;
+  padding: 12px 16px 16px; flex: 1; overflow-y: auto;
   -webkit-overflow-scrolling: touch; background: #0F1218; color: #F2F4F8;
 }
 .home-ind {
@@ -188,7 +188,7 @@ a.list-item:active, .list-item.tap:active { border-color: #4DA3FF; }
 .radio, .check {
   display: flex; align-items: center; gap: 10px;
   padding: 12px; border: 1px solid #2E3648; border-radius: 10px;
-  min-height: 48px; margin-bottom: 8px; background: #242B3D; color: #F2F4F8;
+  min-height: 48px; margin-bottom: 6px; background: #242B3D; color: #F2F4F8;
   cursor: pointer; user-select: none;
 }
 .radio.on, .check.on { border-color: #E11D2E; box-shadow: inset 0 0 0 1px #E11D2E; }
@@ -256,19 +256,19 @@ p { color: #F2F4F8; }
     <div class="body">
 <a class="back-chip" href="R4-judge-willingness.html">← Back</a>
       <h1 class="h1">Review &amp; pay</h1>
-      <div class="list">
+      <div class="list" style="margin-top:8px">
         <div class="list-item"><div>Creative forms</div><strong>$35</strong></div>
         <div class="list-item"><div>Creative weapons</div><strong>$35</strong></div>
         <div class="list-item"><div>Traditional sparring</div><strong>$35</strong></div>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:baseline;margin:16px 0">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 16px">
         <span class="meta">Total</span>
         <span style="font-size:32px;font-weight:700;font-variant-numeric:tabular-nums">$105</span>
       </div>
-      <div class="h2">Payment method</div>
+      <div class="h2" style="margin-top:12px;margin-bottom:8px">Payment method</div>
       <div class="radio on" data-group="pay"><span class="dot"></span> Card</div>
       <div class="radio" data-group="pay"><span class="dot"></span> Cash collected (at-door)</div>
-      <div class="check on" style="margin-top:8px"><span class="box"></span> I confirm details are correct</div>
+      <div class="check on" style="margin-top:12px;margin-bottom:0"><span class="box"></span> I confirm details are correct</div>
       <a class="primary btn-block btn-lg" style="margin-top:16px" href="R6-registration-success.html">Pay &amp; register</a>
     </div>
     <div class="home-ind"><i></i></div>
