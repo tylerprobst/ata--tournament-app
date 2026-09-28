@@ -1,6 +1,6 @@
 /**
  * Ring — physical competition space.
- * One Ring hosts exactly one Division for a given assignment window.
+ * One Division per assignment window; assignment to RING not device.
  */
 
 export type RingStatus = 'idle' | 'active' | 'held';
@@ -9,56 +9,39 @@ export interface Ring {
   id: string;
   tournamentId: string;
   label: string;
-  location?: string;
+  locationNotes?: string;
   status: RingStatus;
-  /** Currently assigned Division (one Ring = one Division for the day). */
-  currentDivisionId?: string;
+  divisionId?: string;
 }
 
-export class RingError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'RingError';
-  }
-}
-
-/** Create a new Ring. */
-export function createRing(params: {
+export interface CreateRingInput {
   id: string;
   tournamentId: string;
   label: string;
-  location?: string;
-}): Ring {
-  return {
-    id: params.id,
-    tournamentId: params.tournamentId,
-    label: params.label,
-    location: params.location,
+  locationNotes?: string;
+  divisionId?: string;
+}
+
+export function createRing(input: CreateRingInput): Ring {
+  const ring: Ring = {
+    id: input.id,
+    tournamentId: input.tournamentId,
+    label: input.label,
     status: 'idle',
   };
+  if (input.locationNotes !== undefined) {
+    ring.locationNotes = input.locationNotes;
+  }
+  if (input.divisionId !== undefined) {
+    ring.divisionId = input.divisionId;
+  }
+  return ring;
 }
 
-/** Assign a Division to a Ring (mutates the division assignment). */
-export function assignDivision(ring: Ring, divisionId: string): Ring {
-  if (ring.status === 'active') {
-    throw new RingError(`Cannot reassign Ring ${ring.id} while active`);
-  }
-  return {
-    ...ring,
-    currentDivisionId: divisionId,
-  };
+export function assignDivision(ring: Ring, divisionId: string | undefined): Ring {
+  return { ...ring, divisionId };
 }
 
-/** Start a Ring (transition to active, locks bracket if sparring). */
-export function startRing(ring: Ring): Ring {
-  if (ring.status === 'active') {
-    throw new RingError(`Ring ${ring.id} is already active`);
-  }
-  if (!ring.currentDivisionId) {
-    throw new RingError(`Cannot start Ring ${ring.id} without assigned Division`);
-  }
-  return {
-    ...ring,
-    status: 'active',
-  };
+export function setRingStatus(ring: Ring, status: RingStatus): Ring {
+  return { ...ring, status };
 }
