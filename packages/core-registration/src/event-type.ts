@@ -1,7 +1,7 @@
 /**
  * EventType catalog (eight fixed values).
- * Owned by Bracket Ring but re-exported for Core Reg cross-module use.
  * Order locked by architecture spec (traditional forms → extreme weapons).
+ * Note: Bracket Ring also defines EventType with scoring rules; both share the same enum values.
  */
 
 /** EventType enum with locked order. */
